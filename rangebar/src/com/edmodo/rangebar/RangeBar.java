@@ -750,6 +750,9 @@ public class RangeBar extends View {
      */
     private void onActionMove(float x) {
 
+        x = Math.max(x, mBar.getLeftX());
+        x = Math.min(x, mBar.getRightX());
+
         // Move the pressed thumb to the new x-position.
         if (mLeftThumb.isPressed()) {
             moveThumb(mLeftThumb, x);
