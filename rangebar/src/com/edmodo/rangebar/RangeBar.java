@@ -85,7 +85,7 @@ public class RangeBar extends View {
     private RangeBar.OnRangeBarChangeListener mListener;
     private int mLeftIndex = 0;
     private int mRightIndex = mTickCount - 1;
-	private int mOffset = 0;
+    private int mOffset = 0;
 
     // Constructors ////////////////////////////////////////////////////////////
 
@@ -127,8 +127,8 @@ public class RangeBar extends View {
         bundle.putInt("THUMB_COLOR_PRESSED", mThumbColorPressed);
 
         bundle.putInt("LEFT_INDEX", mLeftIndex);
-		bundle.putInt("RIGHT_INDEX", mRightIndex);
-		bundle.putInt("OFFSET", mOffset);
+        bundle.putInt("RIGHT_INDEX", mRightIndex);
+        bundle.putInt("OFFSET", mOffset);
 
         bundle.putBoolean("FIRST_SET_TICK_COUNT", mFirstSetTickCount);
 
@@ -157,8 +157,8 @@ public class RangeBar extends View {
             mThumbColorPressed = bundle.getInt("THUMB_COLOR_PRESSED");
 
             mLeftIndex = bundle.getInt("LEFT_INDEX");
-			mRightIndex = bundle.getInt("RIGHT_INDEX");
-			mOffset = bundle.getInt("OFFSET");
+            mRightIndex = bundle.getInt("RIGHT_INDEX");
+            mOffset = bundle.getInt("OFFSET");
             mFirstSetTickCount = bundle.getBoolean("FIRST_SET_TICK_COUNT");
 
             setThumbIndices(mLeftIndex, mRightIndex);
@@ -526,13 +526,11 @@ public class RangeBar extends View {
      *
      * @return the 0-based index of the left thumb
      */
-    public int getLeftIndex()
-    {
+    public int getLeftIndex() {
         return mLeftIndex;
      }
 
-    public int getLeftValue()
-    {
+    public int getLeftValue() {
         return mLeftIndex + mOffset;
     }
 
@@ -541,13 +539,11 @@ public class RangeBar extends View {
      *
      * @return the 0-based index of the right thumb
      */
-    public int getRightIndex()
-    {
+    public int getRightIndex() {
         return mRightIndex;
      }
 
-    public int getRightValue()
-    {
+    public int getRightValue() {
         return mRightIndex + mOffset;
     }
 
@@ -581,7 +577,7 @@ public class RangeBar extends View {
             // attributes.
             final Integer tickCount = ta.getInteger(R.styleable.RangeBar_tickCount, DEFAULT_TICK_COUNT);
 
-			mOffset = ta.getInt(R.styleable.RangeBar_offset, DEFAULT_OFFSET);
+            mOffset = ta.getInt(R.styleable.RangeBar_offset, DEFAULT_OFFSET);
 
             if (isValidTickCount(tickCount)) {
 
