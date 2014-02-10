@@ -42,7 +42,8 @@ public class RangeBar extends View {
     private static final String TAG = "RangeBar";
 
     // Default values for variables
-    private static final int DEFAULT_TICK_COUNT = 3;
+	private static final int DEFAULT_TICK_COUNT = 3;
+	private static final int DEFAULT_OFFSET = 0;
     private static final float DEFAULT_TICK_HEIGHT_DP = 24;
     private static final float DEFAULT_BAR_WEIGHT_PX = 2;
     private static final int DEFAULT_BAR_COLOR = Color.LTGRAY;
@@ -84,6 +85,7 @@ public class RangeBar extends View {
     private RangeBar.OnRangeBarChangeListener mListener;
     private int mLeftIndex = 0;
     private int mRightIndex = mTickCount - 1;
+	private int mOffset = 0;
 
     // Constructors ////////////////////////////////////////////////////////////
 
@@ -125,7 +127,8 @@ public class RangeBar extends View {
         bundle.putInt("THUMB_COLOR_PRESSED", mThumbColorPressed);
 
         bundle.putInt("LEFT_INDEX", mLeftIndex);
-        bundle.putInt("RIGHT_INDEX", mRightIndex);
+		bundle.putInt("RIGHT_INDEX", mRightIndex);
+		bundle.putInt("OFFSET", mOffset);
 
         bundle.putBoolean("FIRST_SET_TICK_COUNT", mFirstSetTickCount);
 
@@ -154,7 +157,8 @@ public class RangeBar extends View {
             mThumbColorPressed = bundle.getInt("THUMB_COLOR_PRESSED");
 
             mLeftIndex = bundle.getInt("LEFT_INDEX");
-            mRightIndex = bundle.getInt("RIGHT_INDEX");
+			mRightIndex = bundle.getInt("RIGHT_INDEX");
+			mOffset = bundle.getInt("OFFSET");
             mFirstSetTickCount = bundle.getBoolean("FIRST_SET_TICK_COUNT");
 
             setThumbIndices(mLeftIndex, mRightIndex);
@@ -512,23 +516,50 @@ public class RangeBar extends View {
 
     }
 
+	public void setThumbValues(int leftThumbValue, int rightThumbValue)
+	{
+		setThumbIndices(leftThumbValue - mOffset, rightThumbValue - mOffset);
+	}
+
     /**
      * Gets the index of the left-most thumb.
      *
      * @return the 0-based index of the left thumb
      */
-    public int getLeftIndex() {
-        return mLeftIndex;
-    }
+	public int getLeftIndex()
+	{
+		return mLeftIndex;
+ 	}
+
+	public int getLeftValue()
+	{
+     return mLeftIndex + mOffset;
+ }
 
     /**
      * Gets the index of the right-most thumb.
      *
      * @return the 0-based index of the right thumb
      */
-    public int getRightIndex() {
-        return mRightIndex;
-    }
+	public int getRightIndex()
+	{
+		return mRightIndex;
+ 	}
+
+	public int getRightValue()
+	{
+		return mRightIndex + mOffset;
+ 	}
+
+	public void setOffset(int offset)
+	{
+		mOffset = offset;
+	}
+
+	public int getOffset()
+	{
+		return mOffset;
+	}
 
     // Private Methods /////////////////////////////////////////////////////////
 
@@ -549,6 +580,8 @@ public class RangeBar extends View {
             // Sets the values of the user-defined attributes based on the XML
             // attributes.
             final Integer tickCount = ta.getInteger(R.styleable.RangeBar_tickCount, DEFAULT_TICK_COUNT);
+
+			mOffset = ta.getInt(R.styleable.RangeBar_offset, DEFAULT_OFFSET);
 
             if (isValidTickCount(tickCount)) {
 
