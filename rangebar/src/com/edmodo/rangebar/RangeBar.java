@@ -42,8 +42,8 @@ public class RangeBar extends View {
     private static final String TAG = "RangeBar";
 
     // Default values for variables
-	private static final int DEFAULT_TICK_COUNT = 3;
-	private static final int DEFAULT_OFFSET = 0;
+    private static final int DEFAULT_TICK_COUNT = 3;
+    private static final int DEFAULT_OFFSET = 0;
     private static final float DEFAULT_TICK_HEIGHT_DP = 24;
     private static final float DEFAULT_BAR_WEIGHT_PX = 2;
     private static final int DEFAULT_BAR_COLOR = Color.LTGRAY;
@@ -516,50 +516,50 @@ public class RangeBar extends View {
 
     }
 
-	public void setThumbValues(int leftThumbValue, int rightThumbValue)
-	{
-		setThumbIndices(leftThumbValue - mOffset, rightThumbValue - mOffset);
-	}
+    public void setThumbValues(int leftThumbValue, int rightThumbValue)
+    {
+        setThumbIndices(leftThumbValue - mOffset, rightThumbValue - mOffset);
+    }
 
     /**
      * Gets the index of the left-most thumb.
      *
      * @return the 0-based index of the left thumb
      */
-	public int getLeftIndex()
-	{
-		return mLeftIndex;
- 	}
+    public int getLeftIndex()
+    {
+        return mLeftIndex;
+     }
 
-	public int getLeftValue()
-	{
-     return mLeftIndex + mOffset;
- }
+    public int getLeftValue()
+    {
+        return mLeftIndex + mOffset;
+    }
 
     /**
      * Gets the index of the right-most thumb.
      *
      * @return the 0-based index of the right thumb
      */
-	public int getRightIndex()
-	{
-		return mRightIndex;
- 	}
+    public int getRightIndex()
+    {
+        return mRightIndex;
+     }
 
-	public int getRightValue()
-	{
-		return mRightIndex + mOffset;
- 	}
+    public int getRightValue()
+    {
+        return mRightIndex + mOffset;
+    }
 
-	public void setOffset(int offset)
-	{
-		mOffset = offset;
-	}
+    public void setOffset(int offset)
+    {
+        mOffset = offset;
+    }
 
-	public int getOffset()
-	{
-		return mOffset;
-	}
+    public int getOffset()
+    {
+        return mOffset;
+    }
 
     // Private Methods /////////////////////////////////////////////////////////
 
