@@ -499,7 +499,7 @@ public class RangeBar extends View {
         }
 
         else {
-            if (mFirstSetTickCount == true)
+            if (mFirstSetTickCount)
                 mFirstSetTickCount = false;
 
             mLeftIndex = leftThumbIndex;
