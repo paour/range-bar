@@ -12,4 +12,5 @@ android {
             res.srcDirs = ['res']
         }
     }
+	buildToolsVersion '23.0.2'
 }
